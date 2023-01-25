@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" class="d-flex justify-content-between">
+    
+    <div *ngIf="IsAuthenticate==true" class="d-flex align-items-center">
+        <button mat-icon-button>
+            <mat-icon (click)="sideNav.toggle();">menu</mat-icon>
+        </button>
+    </div>
+    
+    <h1>Record Frontend</h1>
+    <div  *ngIf="IsAuthenticate==true" style="cursor: pointer;display: flex;justify-content:space-between;margin-left: 1150px;"
+     (click)="logOut();">
+        <div style="text-align:right">{{UserName}}</div>
+        <i class="bi bi-box-arrow-left"></i>
+    </div>
+
+</mat-toolbar>

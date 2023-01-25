@@ -1,0 +1,41 @@
+<div [formGroup]="form">
+  <div class="header justify-content-between">
+    <h2>User Screen</h2>
+  </div>
+
+  <ng-container formArrayName="lessons">
+    <ng-container *ngFor="let form of lessons.controls; let i = index">
+      <div class="row" [formGroupName]="i">
+
+        <mat-form-field>
+          <mat-label for="first-name">User Name: </mat-label>
+          <input matInput #firstname type="text" formControlName="userName">
+          <mat-error *ngIf="UserName?.errors?.required && (UserName?.dirty || UserName?.touched)">Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label for="last-name">Email: </mat-label>
+          <input matInput #lastname type="text" formControlName="email" email="true">
+          <mat-error *ngIf="Email?.errors?.required && (Email?.dirty || Email?.touched)">Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Mobile No</mat-label>
+          <input matInput #mobileno type="text" formControlName="mobileNo">
+          <mat-error *ngIf="MobileNo?.errors?.required && (MobileNo?.dirty || MobileNo?.touched)">Required</mat-error>
+        </mat-form-field>
+
+        <mat-icon class="delete-btn" (click)="deleteLesson(i)">
+          delete_forever</mat-icon>
+
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <button mat-mini-fab (click)="addLesson()">
+    <mat-icon class="add-course-btn">add</mat-icon>
+  </button>
+
+  <button mat-button color="primary" (click)="saveDetails()">Save</button>
+
+</div>
